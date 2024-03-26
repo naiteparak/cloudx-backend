@@ -1,0 +1,20 @@
+{
+  "name": "product-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "build": "npx webpack",
+    "deploy": "npm run build && serverless deploy",
+    "invoke:getProductList": "serverless invoke local --function getProductsList"
+  },
+  "author": "Ashot Karapetyan",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
