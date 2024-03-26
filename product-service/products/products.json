@@ -1,0 +1,44 @@
+[
+  {
+    "id": "4fbcf318-9b6b-4d42-b211-75bfb872c7af",
+    "title": "Engine Oil Filter",
+    "description": "High-quality engine oil filter suitable for most gasoline engines.",
+    "price": 9.99,
+    "count": 50
+  },
+  {
+    "id": "8b13e62c-0d6b-4826-bb29-1a14aa2f1697",
+    "title": "Brake Pads",
+    "description": "Front brake pads compatible with various car models for smooth and safe braking.",
+    "price": 39.99,
+    "count": 100
+  },
+  {
+    "id": "e47d0ed2-263b-4d5f-b796-f68d2cf52e36",
+    "title": "Car Battery",
+    "description": "Long-lasting car battery with high cranking power, suitable for all weather conditions.",
+    "price": 129.99,
+    "count": 30
+  },
+  {
+    "id": "9d76c972-8a65-4ec4-8e7c-7a3ad5ec4d41",
+    "title": "Spark Plugs",
+    "description": "Set of spark plugs designed to provide optimal ignition performance and fuel efficiency.",
+    "price": 5.99,
+    "count": 200
+  },
+  {
+    "id": "c2517b6d-89da-4f84-97b5-ef11b9719509",
+    "title": "Air Filter",
+    "description": "High-flow air filter for increased horsepower and improved engine efficiency.",
+    "price": 19.99,
+    "count": 80
+  },
+  {
+    "id": "d9a98c8a-51e3-4e8d-805a-3aee964458c5",
+    "title": "Windshield Wipers",
+    "description": "Durable windshield wipers designed to provide streak-free visibility during rainy conditions.",
+    "price": 14.99,
+    "count": 150
+  }
+]
