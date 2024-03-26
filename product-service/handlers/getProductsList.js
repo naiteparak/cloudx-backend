@@ -12,8 +12,7 @@ export const getProductsList = async (event) => {
       headers,
       body: JSON.stringify(products),
     };
-  } catch (err) {
-    console.log(err);
+  } catch {
     return {
       statusCode: 500,
       headers,
