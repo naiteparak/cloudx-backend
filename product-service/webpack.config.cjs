@@ -4,6 +4,7 @@ module.exports = {
   entry: {
     getProductById: "./handlers/getProductById.js",
     getProductsList: "./handlers/getProductsList.js",
+    createProduct: './handlers/createProduct.js'
   },
   output: {
     path: path.resolve(__dirname, "dist"),

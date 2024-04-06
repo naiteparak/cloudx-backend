@@ -1,35 +1,58 @@
-import products from "../products/products.json" assert { type: "json" };
+import { DynamoDB } from "aws-sdk";
+
+const dynamodbDocumentClient = new DynamoDB.DocumentClient();
 
 export const getProductById = async (event) => {
-  const headers = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Credentials": true,
-  };
+  console.log("Received event:", JSON.stringify(event.pathParameters, null, 2));
 
   try {
     const { productId } = event.pathParameters;
-    const product = products.find((product) => product.id === productId);
 
-    if (!product) {
+    const productParams = {
+      TableName: "Products",
+      Key: {
+        id: productId,
+      },
+    };
+
+    const productData = await dynamodbDocumentClient
+      .get(productParams)
+      .promise();
+
+    if (!productData.Item) {
       return {
         statusCode: 404,
-        headers,
         body: JSON.stringify({
           message: `Product with ID:${productId} not found`,
         }),
       };
     }
 
+    const stockParams = {
+      TableName: "Stocks",
+      FilterExpression: "product_id = :productId",
+      ExpressionAttributeValues: {
+        ":productId": productId,
+      },
+    };
+
+    const stockData = await dynamodbDocumentClient.scan(stockParams).promise();
+
+    const mergedData = {
+      ...productData.Item,
+      count: stockData.Count > 0 ? stockData.Items[0].count : 0,
+    };
+
     return {
       statusCode: 200,
-      headers,
-      body: JSON.stringify(product),
+      body: JSON.stringify(mergedData),
     };
-  } catch {
+  } catch (err) {
     return {
       statusCode: 500,
-      headers,
-      body: JSON.stringify({ message: "Internal Server Error" }),
+      body: JSON.stringify({
+        message: `Internal Server Error: ${err.message}`,
+      }),
     };
   }
 };
